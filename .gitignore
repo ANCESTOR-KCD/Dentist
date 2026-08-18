@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Django-specific
+.env
+db.sqlite3
+staticfiles/
+media/
+*.log
