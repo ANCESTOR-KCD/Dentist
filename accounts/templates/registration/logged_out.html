@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Logged Out - Maria Land{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="login-page d-flex align-items-center justify-content-center">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+    <div class="bubble bubble-5"></div>
+    <div class="bubble bubble-6"></div>
+
+    <div class="login-card p-4 text-center">
+        <h2 class="mb-3">Logged Out</h2>
+        <p class="text-muted">Thanks for spending some quality time with the site today.</p>
+        <a href="{% url 'login' %}" class="btn btn-dark rounded-pill mt-3 px-4">Log In</a>
+    </div>
+</div>
+{% endblock %}

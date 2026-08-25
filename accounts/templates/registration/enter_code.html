@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Enter Code - Maria Land{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="login-page d-flex align-items-center justify-content-center">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+    <div class="bubble bubble-5"></div>
+    <div class="bubble bubble-6"></div>
+
+    <div class="login-card p-4">
+        <h2 class="text-center mb-3">Enter Your Code</h2>
+        <p class="text-center text-muted mb-4">Check your email for the 6-digit code we sent you.</p>
+
+        {% if messages %}
+        {% for message in messages %}
+        <p class="text-center text-danger">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_code" class="form-label">6-Digit Code</label>
+                <input type="text" name="code" id="id_code" class="form-control text-center" maxlength="6"
+                    pattern="[0-9]{6}" required autofocus>
+            </div>
+            <button type="submit" class="btn btn-dark w-100 rounded-pill">Verify Code</button>
+        </form>
+
+        <p class="text-center mt-3">
+            <a href="{% url 'request_reset_code' %}">Didn't get a code? Request again</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

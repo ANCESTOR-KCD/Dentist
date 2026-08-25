@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register - Maria Land{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="login-page d-flex align-items-center justify-content-center">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+    <div class="bubble bubble-5"></div>
+    <div class="bubble bubble-6"></div>
+
+    <div class="login-card p-4">
+        <h2 class="text-center mb-4">Create Account</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Username</label>
+                {{ form.username }}
+                {% if form.username.errors %}<p class="text-danger small">{{ form.username.errors }}</p>{% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}<p class="text-danger small">{{ form.email.errors }}</p>{% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_password1" class="form-label">Password</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}<p class="text-danger small">{{ form.password1.errors }}</p>{% endif %}
+            </div>
+
+            <div class="mb-3">
+                <label for="id_password2" class="form-label">Confirm Password</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}<p class="text-danger small">{{ form.password2.errors }}</p>{% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-dark w-100 rounded-pill">Register</button>
+        </form>
+
+        <p class="text-center mt-3">
+            Already have an account? <a href="{% url 'login' %}">Log in</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

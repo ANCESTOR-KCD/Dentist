@@ -1,0 +1,40 @@
+.login-page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #eaf4f4, #faf6f0);
+}
+
+.login-card {
+    position: relative;
+    z-index: 2;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 380px;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(120, 180, 200, 0.25);
+    filter: blur(2px);
+    animation: float 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.bubble-1 { width: 120px; height: 120px; left: 10%; top: 15%; animation-duration: 9s; }
+.bubble-2 { width: 80px;  height: 80px;  left: 75%; top: 20%; animation-duration: 7s; animation-delay: 1s; background: rgba(200, 170, 140, 0.2); }
+.bubble-3 { width: 150px; height: 150px; left: 60%; top: 65%; animation-duration: 10s; animation-delay: 0.5s; }
+.bubble-4 { width: 60px;  height: 60px;  left: 20%; top: 70%; animation-duration: 6s; animation-delay: 2s; background: rgba(200, 170, 140, 0.25); }
+.bubble-5 { width: 100px; height: 100px; left: 85%; top: 75%; animation-duration: 8s; animation-delay: 1.5s; }
+.bubble-6 { width: 45px;  height: 45px;  left: 40%; top: 10%; animation-duration: 5s; animation-delay: 0.8s; background: rgba(200, 170, 140, 0.2); }
+
+@keyframes float {
+    0%   { transform: translateY(0) translateX(0); }
+    25%  { transform: translateY(-25px) translateX(15px); }
+    50%  { transform: translateY(10px) translateX(-10px); }
+    75%  { transform: translateY(-15px) translateX(-15px); }
+    100% { transform: translateY(0) translateX(0); }
+}

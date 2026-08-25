@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login - Maria Land{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-page d-flex align-items-center justify-content-center">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+    <div class="bubble bubble-5"></div>
+    <div class="bubble bubble-6"></div>
+
+    <div class="login-card p-4">
+        <h2 class="text-center mb-4">Login Dear User</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_username" class="form-label">Username</label>
+                <input type="text" name="username" id="id_username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="id_password" class="form-label">Password</label>
+                <input type="password" name="password" id="id_password" class="form-control" required>
+            </div>
+
+            
+            {% if form.errors %}
+            <p class="text-danger">Your username and password didn't match. Please try again.</p>
+            {% endif %}
+            
+            <button type="submit" class="btn btn-dark w-100 rounded-pill">Log In</button>
+
+            <a href="{% url 'request_reset_code' %}" class=" d-flex mt-2">Forgot password?</a>
+
+            <div class="register d-flex justify-content-between">
+                <span class="d-flex mt-2">New here? Click to Register..</span>
+                <a href="{% url 'register' %}" class="btn btn-primary btn-sm">Register</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% block footer %} {% endblock %}
+
+{% endblock %}

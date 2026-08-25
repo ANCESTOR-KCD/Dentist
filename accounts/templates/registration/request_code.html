@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Reset Password - Maria Land{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+<div class="login-page d-flex align-items-center justify-content-center">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+    <div class="bubble bubble-4"></div>
+    <div class="bubble bubble-5"></div>
+    <div class="bubble bubble-6"></div>
+
+    <div class="login-card p-4">
+        <h2 class="text-center mb-3">Reset Password</h2>
+        <p class="text-center text-muted mb-4">Enter your email and we'll send you a 6-digit code.</p>
+
+        {% if messages %}
+        {% for message in messages %}
+        <p class="text-center text-info">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_email" class="form-label">Email</label>
+                <input type="email" name="email" id="id_email" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-dark w-100 rounded-pill">Send Code</button>
+        </form>
+
+        <p class="text-center mt-3">
+            <a href="{% url 'login' %}">Back to login</a>
+        </p>
+    </div>
+</div>
+{% endblock %}

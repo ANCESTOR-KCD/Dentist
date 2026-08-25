@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Maria Land{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home_css.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+<nav>
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-link p-0 text-white text-decoration-none">Log Out</button>
+    </form>
+    {% endif %}
+</nav>
+
+    {% block content %}
+    {% endblock %}
+
+    {% block footer%}
+    <div class="footer bg-black d-flex align-items-center justify-content-around px-2" style="min-height: 15vh;">
+        <div class="icon d-flex justify-content-start">
+        <i class="bi bi-magic icon-lg m-2 p-3 text-white"></i>
+    </div>
+
+
+    <div class="footer-img">
+        <img src="{% static 'images/footer.webp' %}" alt="Face" class="mx-1">
+    </div>
+
+    <div class="socials d-flex flex-column align-items-end text-white">
+        <span><i class="bi bi-tiktok"></i> Our Tiktok Handle: <a href="#" class="text-white">flexxx</a></span>
+        <span><i class="bi bi-facebook"></i> Our Facebook Handle: <a href="#" class="text-white">flexxx</a></span>
+        <span><i class="bi bi-instagram"></i> Our Instagram Handle: <a href="#" class="text-white">flexxx</a></span>
+    </div>
+</div>
+
+    {% endblock %}
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/home_js.js' %}"></script>
+</body>
+
+</html>
