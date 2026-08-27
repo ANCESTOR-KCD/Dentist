@@ -124,11 +124,17 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+
+# Only use WhiteNoise's manifest storage in production.
+# Locally (DEBUG=True), Django serves static files directly from
+# STATICFILES_DIRS, so CSS/JS edits show up immediately without
+# needing to run collectstatic every time.
+if not DEBUG:
+    STORAGES = {
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
 
 
 # Email
@@ -143,3 +149,7 @@ EMAIL_HOST_PASSWORD = config('BREVO_SMTP_KEY')
 DEFAULT_FROM_EMAIL = 'dubemchude@gmail.com'
 
 LOGIN_REDIRECT_URL = 'home'
+
+SESSION_COOKIE_AGE = 60 * 60 * 2  # session expires after 2 hours
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # also expires when browser is closed
+SESSION_COOKIE_SECURE = not DEBUG  # only send cookie over HTTPS in production

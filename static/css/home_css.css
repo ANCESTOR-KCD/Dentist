@@ -35,6 +35,7 @@ header {
 
 .services {
     background-color: #faf6f0;
+    padding-bottom: 2rem;
 }
 
 .services p {
@@ -43,14 +44,7 @@ header {
     margin-top: 0.5rem;
 }
 
-.services img {
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto;
-    display: block;
-}
+
 
 .footer-img img {
     height: 120px;
@@ -94,14 +88,16 @@ header {
     color: white;
 }
 
-.flip-card-front img {
+.flip-card-front img,
+.services img {
+    width: 100%;
+    max-width: 200px;
     height: 200px;
-    width: 200px;
-    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
     object-fit: cover;
     margin: 0 auto;
     display: block;
-    border: 3px solid skyblue;
 }
 
 .flip-card-back {
@@ -112,8 +108,9 @@ header {
     font-size: 0.9rem;
 }
 
-/* html, body {
-    height: 100%;
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -124,4 +121,4 @@ body {
 
 main, .content-wrapper {
     flex: 1;
-} */
+} 
