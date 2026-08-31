@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-end">
     {% if user.is_authenticated %}
     <form method="post" action="{% url 'logout' %}">
@@ -48,8 +49,10 @@
 
     {% endblock %}
 
+    {% block extra_js %}
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'js/home_js.js' %}"></script>
+    {% endblock %}
 </body>
 
 </html>

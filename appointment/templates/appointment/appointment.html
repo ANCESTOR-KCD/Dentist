@@ -1,7 +1,271 @@
 {% extends "base.html" %}
-{load static %}
-{% block title %}Book Appointment - Maria Land{% endblock %}
-{% block extra_css %} {% endblock %}
+{% load static %}
 
-{% block content %} <h2>HEKLL</h2> 
+{% block title %}Book Appointment - Maria Land Dental{% endblock %}
+
+{% block extra_css %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/appointment.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="mld-appt">
+
+    <nav class="mld-nav">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a class="mld-brand" href="#services">
+                <span class="mld-brand-mark" aria-hidden="true"></span>
+                Maria Land Dental
+            </a>
+            <ul class="nav d-none d-md-flex gap-4">
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#book">Book</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+            <a href="#book" class="btn btn-brand rounded-pill px-4">Book now</a>
+        </div>
+    </nav>
+
+    <section class="mld-hero" id="services">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="mld-eyebrow">Now booking for this week</span>
+                    <h1>A cleaner<br><em>appointment</em><br>process.</h1>
+                    <p class="lede">Pick a service, find an open slot, and you're booked — no phone tag, no waiting on
+                        hold. Confirmation lands in your inbox the moment you're done.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#book" class="btn btn-brand rounded-pill px-4 py-3">Start booking</a>
+                        <a href="tel:+2348078443574" class="btn btn-brand-outline rounded-pill px-4 py-3">Call the front desk</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex justify-content-center">
+                    <svg class="smile-arc" viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" role="img"
+                        aria-label="Illustration of a smiling row of teeth">
+                        <path d="M20 60 Q200 200 380 60" stroke="#DCEBE4" stroke-width="2" fill="none"
+                            stroke-dasharray="4 8" />
+                        <g class="tooth">
+                            <rect x="30" y="50" width="46" height="60" rx="16" fill="#FFFFFF" stroke="#DCEBE4"
+                                stroke-width="2" />
+                        </g>
+                        <g class="tooth">
+                            <rect x="82" y="70" width="46" height="70" rx="16" fill="#FFFFFF" stroke="#DCEBE4"
+                                stroke-width="2" />
+                        </g>
+                        <g class="tooth">
+                            <rect x="134" y="86" width="46" height="80" rx="16" fill="#9FE3C7" stroke="#245E5A"
+                                stroke-width="2" />
+                        </g>
+                        <g class="tooth">
+                            <rect x="187" y="94" width="46" height="86" rx="16" fill="#245E5A" stroke="#163F3D"
+                                stroke-width="2" />
+                        </g>
+                        <g class="tooth">
+                            <rect x="240" y="86" width="46" height="80" rx="16" fill="#9FE3C7" stroke="#245E5A"
+                                stroke-width="2" />
+                        </g>
+                        <g class="tooth">
+                            <rect x="292" y="70" width="46" height="70" rx="16" fill="#FFFFFF" stroke="#DCEBE4"
+                                stroke-width="2" />
+                        </g>
+                        <g class="tooth">
+                            <rect x="344" y="50" width="46" height="60" rx="16" fill="#FFFFFF" stroke="#DCEBE4"
+                                stroke-width="2" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <ol class="mld-steps list-unstyled" id="stepIndicator">
+            <li class="mld-step active" data-step="1"><span class="mld-step-num">1</span> Service</li>
+            <li class="mld-step" data-step="2"><span class="mld-step-num">2</span> Time</li>
+            <li class="mld-step" data-step="3"><span class="mld-step-num">3</span> Your details</li>
+            <li class="mld-step" data-step="4"><span class="mld-step-num">4</span> Confirm</li>
+        </ol>
+    </div>
+
+    <section class="container" id="book" style="max-width: 900px;">
+        <div class="mld-card">
+
+            <!-- Step 1: Service -->
+            <div class="mld-panel active" id="panel-1">
+                <h3>What brings you in?</h3>
+                <p class="hint">Choose the visit type — this sets how much time we'll set aside for you.</p>
+                <div class="row g-3" id="serviceGrid">
+                    <div class="col-md-4 col-sm-6">
+                        <button type="button" class="mld-service" data-code="checkup" data-name="Check-up & Clean" data-dur="30 min">
+                            <strong>Check-up & clean</strong>
+                            <span>Routine exam and polish</span><br>
+                            <span class="dur">30 min</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <button type="button" class="mld-service" data-code="filling" data-name="Filling" data-dur="45 min">
+                            <strong>Filling</strong>
+                            <span>Cavity treatment</span><br>
+                            <span class="dur">45 min</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <button type="button" class="mld-service" data-code="whitening" data-name="Whitening" data-dur="60 min">
+                            <strong>Whitening</strong>
+                            <span>In-office brightening</span><br>
+                            <span class="dur">60 min</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <button type="button" class="mld-service" data-code="root_canal" data-name="Root Canal" data-dur="90 min">
+                            <strong>Root canal</strong>
+                            <span>Consult or treatment</span><br>
+                            <span class="dur">90 min</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <button type="button" class="mld-service" data-code="braces" data-name="Braces Check" data-dur="20 min">
+                            <strong>Braces check-in</strong>
+                            <span>Orthodontic adjustment</span><br>
+                            <span class="dur">20 min</span>
+                        </button>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <button type="button" class="mld-service" data-code="emergency" data-name="Emergency Visit" data-dur="45 min">
+                            <strong>Emergency visit</strong>
+                            <span>Pain or urgent concern</span><br>
+                            <span class="dur">45 min</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="button" class="btn btn-brand rounded-pill px-4" id="toStep2"
+                        disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Date & time -->
+            <div class="mld-panel" id="panel-2">
+                <h3>Pick a date and time</h3>
+                <p class="hint">Slots update as they're booked, so grab yours while it's open.</p>
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="apptDate" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="apptDate">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Selected time</label>
+                        <input type="text" class="form-control" id="selectedTimeDisplay"
+                            placeholder="Choose a slot below" readonly>
+                    </div>
+                </div>
+                <div class="mld-slots" id="slotGrid">
+                    <div class="mld-slot">9:00 AM</div>
+                    <div class="mld-slot">9:30 AM</div>
+                    <div class="mld-slot taken">10:00 AM</div>
+                    <div class="mld-slot">10:30 AM</div>
+                    <div class="mld-slot">11:00 AM</div>
+                    <div class="mld-slot taken">11:30 AM</div>
+                    <div class="mld-slot">1:00 PM</div>
+                    <div class="mld-slot">1:30 PM</div>
+                    <div class="mld-slot">2:00 PM</div>
+                    <div class="mld-slot taken">2:30 PM</div>
+                    <div class="mld-slot">3:00 PM</div>
+                    <div class="mld-slot">3:30 PM</div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-brand-outline rounded-pill px-4" data-back="1">Back</button>
+                    <button type="button" class="btn btn-brand rounded-pill px-4" id="toStep3"
+                        disabled>Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Details -->
+            <div class="mld-panel" id="panel-3">
+                <h3>Who's this appointment for?</h3>
+                <p class="hint">Pick yourself, or one of your dependents. Booking for a child who doesn't have an account? Add them below.</p>
+
+                <label for="patientSelect" class="form-label">Patient</label>
+                <select class="form-select mb-3" id="patientSelect">
+                    {% for p in patients %}
+                    <option value="{{ p.id }}">{{ p.first_name }} {{ p.last_name }} ({{ p.get_relationship_display }})</option>
+                    {% endfor %}
+                    <option value="__new__">+ Add a family member</option>
+                </select>
+
+                <div id="newDependentForm" class="row g-3 mb-3" style="display:none;">
+                    <div class="col-md-4">
+                        <label for="depFirstName" class="form-label">First name</label>
+                        <input type="text" class="form-control" id="depFirstName" placeholder="Chidi">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="depLastName" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="depLastName" placeholder="Okafor">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="depDob" class="form-label">Date of birth</label>
+                        <input type="date" class="form-control" id="depDob">
+                    </div>
+                    <div class="col-12">
+                        <button type="button" class="btn btn-brand-outline rounded-pill px-4" id="saveDependent">Save family member</button>
+                    </div>
+                </div>
+
+                <label for="notes" class="form-label">Anything we should know?</label>
+                <textarea class="form-control mb-3" id="notes" rows="3"
+                    placeholder="Sensitivity, insurance details, accessibility needs..."></textarea>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-brand-outline rounded-pill px-4" data-back="2">Back</button>
+                    <button type="button" class="btn btn-brand rounded-pill px-4" id="toStep4" disabled>Review</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirm -->
+            <div class="mld-panel" id="panel-4">
+                <h3>Review your appointment</h3>
+                <p class="hint">Check the details below, then confirm to lock in your slot.</p>
+                <dl class="mld-summary" id="summaryBox"></dl>
+                <div class="d-flex justify-content-between">
+                    <button type="button" class="btn btn-brand-outline rounded-pill px-4" data-back="3">Back</button>
+                    <button type="button" class="btn btn-brand rounded-pill px-4" id="confirmBtn">Confirm
+                        appointment</button>
+                </div>
+            </div>
+
+            <!-- Confirmation -->
+            <div class="mld-panel" id="panel-5">
+                <div class="text-center py-3">
+                    <div class="mld-confirm-mark">✓</div>
+                    <h3>You're booked</h3>
+                    <p class="hint" id="confirmText">We've saved your appointment and sent a confirmation to your email.
+                    </p>
+                    <button type="button" class="btn btn-brand-outline rounded-pill px-4" id="restartBtn">Book
+                        another</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="mld-footer" id="contact">
+        Maria Land Dental &middot; 14 Independence Layout, Enugu &middot; (080) 000-0000 &middot; Mon&ndash;Sat,
+        8am&ndash;6pm
+    </footer>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script>
+  window.APPT_CONFIG = {
+    bookUrl: "{% url 'appointment:book_appointment' %}",
+    addDependentUrl: "{% url 'appointment:add_dependent' %}",
+    csrfToken: "{{ csrf_token }}",
+  };
+</script>
+<script src="{% static 'js/appointment.js' %}"></script>
 {% endblock %}
